@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
+import HeaderQuiz from "./ui/HeaderQuiz";
+import ProviderStore from "./ui/ProviderStore";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const robotoSans = Roboto({
+  variable: "--font-roboto-sans",
   subsets: ["latin"],
 });
 
@@ -24,10 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${robotoSans.variable}  antialiased`}>
+        <HeaderQuiz />
+
+        <ProviderStore>{children}</ProviderStore>
+        <div id="modal"></div>
       </body>
     </html>
   );
