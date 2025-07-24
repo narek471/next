@@ -66,7 +66,7 @@ export default function ModalSuccess() {
           transition={{ duration: 0.75, ease: "circIn" }}>
           <Image src={success} alt="success" />
         </motion.div>
-        <h1 className="font-bold text-[50px]">{text}</h1>
+        <h1 className="font-bold text-[50px] text-center">{text}</h1>
       </motion.div>
     </motion.div>,
     document.body

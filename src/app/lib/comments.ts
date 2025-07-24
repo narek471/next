@@ -70,3 +70,44 @@ export const ANSWERS_COMMENTS: Comment[] = [
     rate: 5,
   },
 ];
+
+export const SUCCESS_STORIES = [
+  {
+    message: "To do it is to believe it truly works",
+    description:
+      "I was very skeptical at first. Seems like yeah yeah yeah but nothing works. I started having problems about 1 yr ago. I bought supplements, but never worked. So I came across this ad on my feed. What the heck let me try it. Even though it would cost some money. I’ve wasted money before. So I decided to try it. I will say I noticed a difference in about 2 weeks. So I was excited about the results in the future. I’ve now doing the exercises for 72 days straight. WOW I wake up like I’m in my twenties. Standing at attention, bigger, stronger than in years. I definitely would recommend this plan to everyone. Just remember be committed to doing the exercise as I am. I guarantee you’ll see results and you’ll be tremendously happy.",
+    author: "Pepsi Zero",
+    rate: 5,
+  },
+  {
+    message: "Excellent",
+    description: "Literally changed my life!",
+    author: "Yak",
+    rate: 5,
+  },
+  {
+    message: "Few weeks in",
+    description:
+      "I’m a few weeks in and I can already tell there’s better blood flow and less temptation to ejaculate early.",
+    author: "IVBES",
+    rate: 5,
+  },
+  {
+    message: "Very effective!",
+    description: "Give it a try and thank me later.",
+    author: "ubong inwang",
+    rate: 5,
+  },
+  {
+    message: "Definitely worth it!",
+    description: "Awesome program!",
+    author: "iamtns",
+    rate: 5,
+  },
+  {
+    message: "K training",
+    description: "Why didn’t I know this 30 years ago?",
+    author: "g-roh",
+    rate: 5,
+  },
+];

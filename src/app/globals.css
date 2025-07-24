@@ -29,3 +29,33 @@ body {
     font-family: Arial, Helvetica, sans-serif;
   }
 }
+.figure {
+  width: 122px;
+  height: 56px;
+  background-image: url("../../public/figure.svg");
+  background-position: center;
+  background-size: cover;
+}
+.gradient {
+  animation: loading-95193437 300s linear infinite;
+  background: repeating-linear-gradient(
+    45deg,
+    #4caf50,
+    #4caf50 10px,
+    #66bb6a 0,
+    #66bb6a 20px
+  );
+  height: 100%;
+  left: -10000px;
+  position: relative;
+  transform: translate(30%);
+  width: 10000px;
+}
+@keyframes loading-95193437 {
+  0% {
+    transform: translate(30%);
+  }
+  100% {
+    transform: translate(100%);
+  }
+}

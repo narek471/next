@@ -4,7 +4,7 @@ import DateEndAnimation from "@/app/ui/EndQuiz/DateEndAnimation";
 export default function FinalAdjustment() {
   return (
     <main>
-      <section className="flex flex-col gap-5 w-[600px] max-lg:w-[600px] items-center">
+      <section className="flex flex-col gap-5 w-[600px] max-lg:w-[300px] items-center">
         <h2 className="text-[23px] font-bold text-center">Final adjustment</h2>
         <DateEndAnimation />
         <video

@@ -44,14 +44,14 @@ export default function BackGotIt({
       <button>
         <Link
           href={`${backpath}${searchParams}`}
-          className="h-[55px] rounded-[10px]  w-[256px] bg-gray-200 text-black flex items-center justify-center gap-2">
+          className="h-[55px] rounded-[10px] max-lg:w-[200px]  w-[256px] bg-gray-200 text-black flex items-center justify-center gap-2">
           <ArrowLeft />
           Back
         </Link>
       </button>
       <button>
         <Link
-          className={`h-[55px] rounded-[10px]  w-[256px] bg-[#e44240] text-white flex items-center justify-center gap-2`}
+          className={`h-[55px] rounded-[10px] max-lg:w-[200px]  w-[256px] bg-[#e44240] text-white flex items-center justify-center gap-2`}
           href={`${path}${searchParams}`}>
           Got it <ArrowRight />
         </Link>

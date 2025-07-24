@@ -54,7 +54,7 @@ function AnswersProgress({
     };
   }, [flag]);
   return (
-    <div className="flex gap-2  text-[14px] flex-col w-[536px] ">
+    <div className="flex gap-2  text-[14px] flex-col max-lg:w-[300px] w-[536px] ">
       <div
         className={`flex font-bold ${
           !flag ? "opacity-70" : ""
@@ -95,7 +95,7 @@ export default function AnalyzingAnswers() {
   }, []);
   return (
     <section className="flex w-1/1 flex-col items-center gap-10">
-      <div className="flex w-1/1 ml-[2s0px]  font-bold justify-center">
+      <div className="flex w-1/1 ml-[20px]  font-bold justify-center">
         <h2 className="text-[20px]  text-center">Analyzing your answers</h2>
         <span className="w-[32px] text-[20px]">{points}</span>
       </div>

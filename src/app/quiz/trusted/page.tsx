@@ -4,7 +4,7 @@ import BackContinue from "@/app/ui/EndQuiz/BackContinue";
 
 export default function Page() {
   return (
-    <main className="w-[600px] flex items-center mt-[50px] min-h-[120vh] gap-10 max-lg:w-[300px] flex-col">
+    <main className="w-[600px] flex items-center mt-[50px] min-h-[120vh] max-lg:gap-0 gap-10 max-lg:w-[300px] flex-col">
       <h1 className="text-[24px] font-[900]  text-center">
         Congratulations on joining the millions of men prioritizing sexual
         wellness

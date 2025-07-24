@@ -8,7 +8,11 @@ export default function AgeQuiz() {
   return (
     <section className="flex items-center flex-col gap-[20px]">
       <h2 className="text-[19px] font-[900]">Creating Sexual Wellness Plan </h2>
-      <div className="w-[311px] bg-gray-200 h-[16px] rounded-2xl"></div>
+      <div className="w-[311px] bg-gray-200 h-[16px] rounded-2xl">
+        <div className="w-[30%] overflow-hidden h-1/1 rounded-2xl">
+          <div className="gradient rounded-2xl"></div>
+        </div>
+      </div>
       <p className="font-[900]">How old are you?</p>
       <ul className="flex flex-col gap-2">
         <AgeElQuiz ageEl="25-35" image={age1} />

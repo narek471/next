@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useParams, useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -13,8 +13,7 @@ export default function Continue({
   path: string;
   disabled?: boolean;
 }) {
-  const task = useParams()["slug"];
-  const { taskAnswered, selected } = useSelector(
+  const { taskAnswered } = useSelector(
     (state: {
       userData: {
         taskAnswered: { [key: number]: string };
@@ -34,11 +33,11 @@ export default function Continue({
     }
 
     setSearchParams(textUrl);
-  }, [taskAnswered, selected]);
+  }, [taskAnswered]);
   return (
     <section className="flex gap-2 w-1/1 mt-[15px] font-bold ">
       <button className="w-1/1" disabled={disabled}>
-        {disabled ? (
+        {disabled !== false ? (
           <Link
             className={` h-[55px] rounded-[10px] font-bold shadow-[0px_10px_40px_#e44240]  bg-[#e44240] text-white flex items-center justify-center gap-2`}
             href={`/quiz/${path}${searchParams}`}>
