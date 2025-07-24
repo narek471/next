@@ -3,7 +3,7 @@ import { Answer, Quiz as IQuiz } from "@/app/lib/quizs";
 import { setTaskAnswer } from "@/app/store/reducers/userData";
 import { CheckIcon } from "lucide-react";
 
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -13,6 +13,14 @@ export default function Quiz({ data }: { data: IQuiz }) {
   const [selected, setSelected] = useState(-1);
   const dispatch = useDispatch();
   const task = useParams()["slug"];
+  const searchParam = useSearchParams();
+  useEffect(() => {
+    console.log(searchParam.get(task));
+    if (searchParam.get(task) || searchParam.get(task) == "0") {
+      setSelected(Number(searchParam.get(task)));
+      console.log(selected);
+    }
+  }, []);
   useEffect(() => {
     if (selected != -1) {
       dispatch(setSelectedStore(selected));

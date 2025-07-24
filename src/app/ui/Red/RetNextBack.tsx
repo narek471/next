@@ -10,13 +10,16 @@ import {
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProgress, setSelected } from "../store/reducers/userData";
+import { setProgress, setSelected } from "../../store/reducers/userData";
 
-export default function NextBack() {
+export default function RedNextBack() {
   const task = useParams()["slug"];
   const { taskAnswered, selected } = useSelector(
     (state: {
-      userData: { taskAnswered: { [key: number]: string }; selected: number };
+      userData: {
+        taskAnswered: { [key: number]: string };
+        selected: number;
+      };
     }) => state.userData
   );
   const [disabled, setDisabled] = useState(false);
@@ -34,7 +37,7 @@ export default function NextBack() {
       for (let i = 0; i < arr.length; i++) {
         textUrl += `${arr[i][0]}=${arr[i][1]}&`;
       }
-      console.log(textUrl);
+
       router.push(`${task}${textUrl}`);
       setSearchParams(textUrl);
       setDisabled(false);
@@ -44,11 +47,11 @@ export default function NextBack() {
     }
   }, [taskAnswered, selected]);
   return (
-    <section className="flex gap-2 bg-white font-bold fixed bottom-0 top-[90%]">
+    <section className="flex gap-2  bg-[#111113] font-bold fixed bottom-0 top-[90%]">
       <button>
         <Link
           href={Number(task) <= 0 ? "/" : `${+task! - 1}${searchParams}`}
-          className="h-[55px] rounded-[10px] w-[150px] bg-gray-200 text-black flex items-center justify-center gap-2"
+          className="h-[55px] bg-[#282828] rounded-[10px] w-[150px] text-white flex items-center justify-center gap-2"
           onClick={() => {
             dispatch(setProgress({ type: "min" }));
             setSelected(null);
@@ -61,23 +64,12 @@ export default function NextBack() {
         onClick={() => {
           dispatch(setProgress({ type: "add" }));
           setSelected(null);
-        }}
-        disabled={disabled}>
-        {!disabled ? (
-          <Link
-            className={`${
-              disabled ? "opacity-40" : "opacity-100"
-            } h-[55px] rounded-[10px]  w-[150px] bg-black text-white flex items-center justify-center gap-2`}
-            href={`${
-              Number(task) == 27 ? `/quiz/planing` : +task! + 1
-            }${searchParams}`}>
-            Next <ArrowRight />
-          </Link>
-        ) : (
-          <p className=" h-[55px] opacity-40 rounded-[10px]  w-[150px] bg-black text-white flex items-center justify-center gap-2">
-            Next <ArrowRight />
-          </p>
-        )}
+        }}>
+        <Link
+          className={` h-[55px] rounded-[10px]  w-[150px] bg-[#e44240] text-white flex items-center justify-center gap-2`}
+          href={`${+task! + 1}${searchParams}`}>
+          I got it <ArrowRight />
+        </Link>
       </button>
     </section>
   );

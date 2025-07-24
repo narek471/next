@@ -1,11 +1,19 @@
+import BaseCanGoals from "../ui/PersonalComponent/BaseCanGoals";
+import BasedGoals from "../ui/PersonalComponent/BasedGoals";
+import EffectiveExercises from "../ui/RedComponent/EffectiveExercises";
+import KegelPlan from "../ui/RedComponent/KegelPlan";
+import MensImproved from "../ui/RedComponent/MensImproved";
+import QualityErect from "../ui/RedComponent/QualityErect";
 export type Answer = {
   title: string;
   description: string;
 };
+
 export type Quiz = {
-  type: "rate" | "base";
-  question: string;
-  answers: (string | Answer)[];
+  type: "rate" | "base" | "red" | "personal";
+  question?: string;
+  content?: React.ReactNode;
+  answers?: (string | Answer)[];
 };
 
 const quizes: Quiz[] = [
@@ -62,6 +70,7 @@ const quizes: Quiz[] = [
       "I don`t want to answer",
     ],
   },
+
   {
     type: "base",
     question: "Can you have sex 2 times in a row?",
@@ -72,6 +81,10 @@ const quizes: Quiz[] = [
       "All the time",
       "I don`t want to answer",
     ],
+  },
+  {
+    type: "red",
+    content: <QualityErect />,
   },
   {
     type: "rate",
@@ -88,6 +101,7 @@ const quizes: Quiz[] = [
     question: "How satisfied are you with your sex life in the last 3 months?",
     answers: ["1", "2", "3", "4", "5"],
   },
+  { type: "red", content: <EffectiveExercises /> },
   {
     type: "rate",
     question: "How much do you worry about having problem with erection?",
@@ -126,9 +140,17 @@ const quizes: Quiz[] = [
     ],
   },
   {
+    type: "personal",
+    content: <BasedGoals />,
+  },
+  {
     type: "base",
     question: "Do you want to improve ejaculation control?",
     answers: ["Yes,I`d like to", "No,I don`t want to"],
+  },
+  {
+    type: "red",
+    content: <MensImproved />,
   },
   {
     type: "rate",
@@ -147,6 +169,10 @@ const quizes: Quiz[] = [
     ],
   },
   {
+    type: "red",
+    content: <KegelPlan />,
+  },
+  {
     type: "base",
     question: "How often do you drink alcohol?",
     answers: [
@@ -157,15 +183,21 @@ const quizes: Quiz[] = [
       "I don`t drink t all",
     ],
   },
+
   {
     type: "base",
     question: "Do you smoke?",
     answers: ["Yes, I do", "No, I don`t", "Sometimes"],
   },
+
   {
     type: "rate",
     question: "How healthy is your diet?",
     answers: ["1", "2", "3", "4", "5"],
+  },
+  {
+    type: "personal",
+    content: <BaseCanGoals />,
   },
   {
     type: "rate",

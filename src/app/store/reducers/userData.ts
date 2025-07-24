@@ -6,7 +6,7 @@ const initialState = {
   globalAnim: false,
   taskAnswered: {} as { [key: number]: number },
   progress: 0,
-  selected: null,
+  selected: null as number | null,
 };
 
 const userDataSlice = createSlice({
@@ -30,9 +30,9 @@ const userDataSlice = createSlice({
       action: { payload: { type: "add" | "min" } }
     ) {
       if (action.payload.type == "add") {
-        state.progress = state.progress + 5;
+        state.progress = state.progress + 3.8;
       } else {
-        state.progress = state.progress - 5;
+        state.progress = state.progress - 4;
       }
     },
     setSelected(

@@ -20,15 +20,15 @@ export default function RateQuiz({ data }: { data: IQuiz }) {
     }
   }, [selected]);
   return (
-    <section className="mt-[40px] w-[500px]  max-lg:max-w-[300px]  items-center flex flex-col gap-[30px]">
-      <div className="">
-        <h2 className="text-xl max-lg:text-[15px] text-center font-bold">
+    <section className="mt-[40px]   max-lg:max-w-[300px]  items-center flex flex-col gap-[30px]">
+      <div className=" flex flex-col gap-10 items-center">
+        <h2 className="text-xl w-[400px] max-lg:w-[300px] max-lg:text-[15px] text-center font-bold">
           {data.question}
         </h2>
-        <p className="text-gray-400 text-center">Rate from 1 to 5</p>
+        <p className="text-gray-700 text-center">Rate from 1 to 5</p>
         <div className="flex flex-col gap-2  items-center">
           <ul className="flex gap-2 justify-center">
-            {data.answers.map((val, i) => (
+            {data.answers!.map((val, i) => (
               <button
                 onClick={() => {
                   setSelected(i);
@@ -41,7 +41,7 @@ export default function RateQuiz({ data }: { data: IQuiz }) {
               </button>
             ))}
           </ul>
-          <div className="text-gray-400 w-1/2 flex justify-between">
+          <div className="text-gray-700 w-1/1  max-lg:w-1/2 flex justify-between">
             <p>Not hard</p>
             <p>Very hard</p>
           </div>

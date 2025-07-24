@@ -3,7 +3,7 @@ import logo from "../../../public/Kegel Power v5.png";
 
 export default function HeaderQuiz() {
   return (
-    <header className="h-[80px] flex justify-center items-center">
+    <header className="h-[80px] max-lg:pl-5 flex justify-center items-center">
       <div className="w-[500px] flex gap-4">
         {" "}
         <Image width={50} alt="logo" src={logo} />
