@@ -20,16 +20,10 @@ export default function ModalSuccess() {
     }) => state.userData
   );
   const router = useRouter();
-  const search = useSearchParams();
+  const search = useSearchParams().toString();
   const textNeed = "Your plan is ready!";
 
   useEffect(() => {
-    let textUrl = `?age=${search.get("age")}&`;
-    const arr = Object.entries(taskAnswered);
-    for (let i = 0; i < arr.length; i++) {
-      textUrl += `${arr[i][0]}=${arr[i][1]}&`;
-    }
-
     const interval = setInterval(() => {
       setText((val) => {
         if (val.length < textNeed.length) {
@@ -41,7 +35,7 @@ export default function ModalSuccess() {
 
     const timeout = setTimeout(() => {
       clearInterval(interval);
-      router.push(`/quiz/trusted${textUrl}`);
+      router.push(`/quiz/trusted?${search}`);
     }, textNeed.length * 100 + 500); // Добавляем небольшой запас времени
 
     return () => {

@@ -25,8 +25,8 @@ export default function HeaderLanding() {
     };
   }, []);
   return (
-    <header className="h-[80px] max-lg:pl-5 bg-white flex justify-center  fixed top-0 z-10  items-center">
-      <div className="w-[600px] justify-between bg-white max-lg:w-[300px] p-[16px] flex shadow-[0_4px_4px_#00000026]">
+    <header className="h-[80px] max-md:w-[492px] max-sm:w-[452px] max-md:pl-10 max-md:pr-10  bg-white flex justify-center  fixed top-0 z-10  items-center">
+      <div className="w-[600px] justify-between bg-white max-md:w-1/1 p-[16px] flex shadow-[0_4px_4px_#00000026]">
         {timer.result ? (
           <div className=" flex gap-4 ">
             <Image width={50} alt="logo" src={logo} />

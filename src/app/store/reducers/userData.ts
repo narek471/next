@@ -7,6 +7,7 @@ const initialState = {
   taskAnswered: {} as { [key: number]: number },
   progress: 0,
   selected: null as number | null,
+  selectedPlan: 1,
 };
 
 const userDataSlice = createSlice({
@@ -25,21 +26,17 @@ const userDataSlice = createSlice({
     ) {
       state.taskAnswered[action.payload[0]] = action.payload[1];
     },
-    setProgress(
-      state: typeof initialState,
-      action: { payload: { type: "add" | "min" } }
-    ) {
-      if (action.payload.type == "add") {
-        state.progress = state.progress + 3.8;
-      } else {
-        state.progress = state.progress - 4;
-      }
+    setProgress(state: typeof initialState, action: { payload: number }) {
+      state.progress = action.payload;
     },
     setSelected(
       state: typeof initialState,
       action: { payload: number | null }
     ) {
       state.selected = action.payload;
+    },
+    setSelectedPlan(state: typeof initialState, action: { payload: number }) {
+      state.selectedPlan = action.payload;
     },
   },
 });
@@ -50,5 +47,6 @@ export const {
   setTaskAnswer,
   setSelected,
   setProgress,
+  setSelectedPlan,
 } = userDataSlice.actions;
 export default userDataSlice.reducer;

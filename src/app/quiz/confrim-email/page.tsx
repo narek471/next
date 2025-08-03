@@ -6,7 +6,7 @@ import { Lock } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+
 import saveEmail from "@/app/lib/actions/saveEmail";
 import Link from "next/link";
 
@@ -18,27 +18,11 @@ export default function ConfrimEmail() {
   const [email, setEmail] = useState("");
   const [disabled, setDisabled] = useState(true);
 
-  const { taskAnswered } = useSelector(
-    (state: {
-      userData: {
-        taskAnswered: { [key: number]: string };
-        selected: number;
-      };
-    }) => state.userData
-  );
-
   const search = useSearchParams();
-
-  const [searchParams, setSearchParams] = useState("");
+  const [searchParam, setSearchParam] = useState("");
   useEffect(() => {
-    let textUrl = `?age=${search.get("age")}&`;
-    const arr = Object.entries(taskAnswered);
-    for (let i = 0; i < arr.length; i++) {
-      textUrl += `${arr[i][0]}=${arr[i][1]}&`;
-    }
-
-    setSearchParams(textUrl);
-  }, [taskAnswered]);
+    setSearchParam(search.toString());
+  }, [search]);
   useEffect(() => {
     if (validateEmail(email)) {
       setDisabled(false);
@@ -89,7 +73,7 @@ export default function ConfrimEmail() {
           {disabled == false ? (
             <Link
               className={` h-[55px] rounded-[10px] font-bold shadow-[0px_10px_40px_#e44240]  bg-[#e44240] text-white flex items-center justify-center gap-2`}
-              href={`/quiz/landing${searchParams}`}>
+              href={`/quiz/landing?${searchParam}`}>
               Continue
             </Link>
           ) : (

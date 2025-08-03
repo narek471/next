@@ -8,7 +8,11 @@ export default function KegelPlan() {
       <h2 className="font-bold   text-[20px] text-white text-center">
         The Kegel Plan is better than pills
       </h2>
-      <Image className="w-1/1 h-[405px]" src={tablePlan} alt="table plan" />
+      <Image
+        className="w-1/1 h-[405px] max-lg:h-[300px]"
+        src={tablePlan}
+        alt="table plan"
+      />
       <div className="bg-[#1c1c1f] p-[9px] text-white w-1/1 flex gap-2 items-center rounded-[9px]">
         <Image src={NCB} alt="National Center for Biotechnology Info" />
         <div>

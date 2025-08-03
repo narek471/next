@@ -4,9 +4,14 @@ import Link from "next/link";
 
 export default function MoneyBack() {
   return (
-    <section className="w-[536px] bg-linear-[180deg,#f1f3f900,#f1f3f9_23.44%] p-[32px] max-lg:w-[300px] flex flex-col items-center">
-      <div className="flex flex-col gap-4 items-center">
-        <Image src={moneyBack} alt="money back" className="w-1/1" />
+    <section className="w-[536px] bg-linear-[180deg,#f1f3f900,#f1f3f9_23.44%] p-[32px] max-md:w-[350px] flex flex-col items-center max-md:p-[32px] gap-5">
+      <div className="flex flex-col  items-center w-1/1">
+        <Image
+          height={126}
+          src={moneyBack}
+          alt="money back"
+          className="w-1/1 mb-[10px]"
+        />
         <h2 className="text-[26px] font-bold text-center">30-Day Money-Back</h2>
         <p className="text-[16px] font-bold text-center">
           Guarantee Without Questions

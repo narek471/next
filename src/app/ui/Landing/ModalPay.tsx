@@ -2,8 +2,12 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
-import saveCard from "@/app/lib/actions/saveCard";
+import { useState } from "react";
+import allCard from "../../../../public/all_cards.webp";
+import paypal from "../../../../public/icon_paypal.webp";
+import Image from "next/image";
+import CreditCard from "./CreditCard";
+import PayPal from "./PayPal";
 
 export default function ModalPay({
   setFlag,
@@ -12,53 +16,53 @@ export default function ModalPay({
   setFlag: (arg: boolean) => void;
   setModalFlag: (arg: boolean) => void;
 }) {
-  const [text, setText] = useState("");
-  const [disabled, setDisabled] = useState(false);
+  const [currPay, setCurPay] = useState(false);
 
-  useEffect(() => {
-    if (text.trim().length < 16) {
-      setDisabled(true);
-    } else {
-      setDisabled(false);
-    }
-  }, [text]);
   return createPortal(
     <div className="fixed top-0 bottom-0 left-0 right-0 w-1/1 flex items-center justify-center z-[1000] h-screen bg-[rgba(0,0,0,0.66)]">
       <motion.form
         initial={{ transform: `translateY(100vh)` }}
         animate={{ transform: `translateY(0vh)` }}
+        exit={{ transform: `translateY(100vh)` }}
         transition={{ duration: 0.5, ease: "linear" }}
-        action={saveCard}
-        onSubmit={() => {
+        onSubmit={(e) => {
+          e.preventDefault();
           setFlag(false);
           setModalFlag(true);
         }}
-        className="h-[97%] gap-10 w-[585px] mt-[100px] max-lg:w-[300px] bg-white rounded-tl-[16px] p-[24px] flex flex-col">
+        className="h-[97%]  w-[585px] mt-[100px] max-md:w-1/1 bg-white rounded-tl-[16px] p-[24px] flex flex-col">
         <button
           type="button"
           className="cursor-pointer flex flex-row-reverse"
           onClick={() => setFlag(false)}>
           <X />
         </button>{" "}
-        <h2 className="text-2xl font-bold text-center">Input your card</h2>
-        <input
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          className="border-[2px]  text-[16px] h-[53px] bg-[#f1f3f9] w-1/1 outline-0 p-[14px]  rounded-[9px] relative border-white shadow-[inset_0_4px_4px_#0000000a]"
-          type="text"
-          placeholder="0000 0000 0000 0000"
-          name="card"
-        />
-        <button
-          type="submit"
-          disabled={disabled}
-          className={` h-[55px] rounded-[10px] font-bold ${
-            disabled
-              ? "bg-[#cacaca]"
-              : "shadow-[0px_10px_40px_#e44240]  bg-[#e44240]"
-          } text-white flex items-center justify-center gap-2 cursor-pointer`}>
-          Continue
-        </button>
+        <h2 className="text-[20px] font-bold text-center">
+          Select Payment method
+        </h2>
+        <div className="flex gap-2 mt-[20px]">
+          <button
+            type="button"
+            onClick={() => setCurPay(true)}
+            className={`${
+              currPay
+                ? "bg-[#eef1fb] border-[#5773d6]"
+                : "bg-[#f9f9f9] border-transparent"
+            } border-2  rounded-[9px] h-[49px] cursor-pointer flex items-center justify-center transition-all duration-[0.25] ease-in w-1/1`}>
+            <Image height={39} width={100} src={paypal} alt="alt card" />
+          </button>
+          <button
+            type="button"
+            onClick={() => setCurPay(false)}
+            className={`${
+              !currPay
+                ? "bg-[#eef1fb] border-[#5773d6]"
+                : "bg-[#f9f9f9] border-transparent"
+            } border-2  rounded-[9px] cursor-pointer h-[49px] flex items-center justify-center transition-all duration-[0.25] ease-in w-1/1`}>
+            <Image height={39} width={100} src={allCard} alt="alt card" />
+          </button>
+        </div>
+        {currPay ? <PayPal /> : <CreditCard />}
       </motion.form>
     </div>,
     document.body

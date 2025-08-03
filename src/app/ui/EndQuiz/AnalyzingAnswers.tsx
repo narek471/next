@@ -44,7 +44,7 @@ function AnswersProgress({
           }
           return val + 1;
         });
-      }, 50);
+      }, 40);
     }
 
     return () => {

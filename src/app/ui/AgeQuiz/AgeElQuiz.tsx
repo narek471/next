@@ -21,6 +21,8 @@ export default function AgeElQuiz({
       state.userData
   );
   const [flag, setFlag] = useState(false);
+  const urlAgeArr = ageEl.split("-");
+  const urlAge = urlAgeArr.length == 1 ? ageEl : urlAgeArr[0] + urlAgeArr[1];
 
   return (
     <button
@@ -30,10 +32,10 @@ export default function AgeElQuiz({
         dispatch(setGlobalAnim(true));
         setFlag(true);
       }}
-      className={`cursor-pointer w-[375px] h-[105px] transition-colors duration-[0.4s] rounded-[15px] font-bold   ${
+      className={`cursor-pointer w-[375px] h-[105px] transition-colors duration-[0.4s] rounded-[15px] font-bold max-sm:w-[340px]   ${
         flag ? "bg-black text-white" : "bg-[#f1f3f9] text-black"
       }`}>
-      <Link href={"quiz/questions/0?age=" + ageEl}>
+      <Link href={"quiz/questions/0?age=" + urlAge}>
         <div className="flex justify-around">
           <div className="flex items-center gap-[20px]">
             <div className="bg-white font-bold flex items-center justify-center text-black rounded-full h-[23px] w-[23px]">

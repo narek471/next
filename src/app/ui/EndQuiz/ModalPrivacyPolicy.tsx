@@ -15,18 +15,8 @@ export default function ModalPrivacyPolicy() {
   );
   const [disabled, setDisabled] = useState(true);
 
-  const search = useSearchParams();
+  const search = useSearchParams().toString();
 
-  const [searchParams, setSearchParams] = useState("");
-
-  useEffect(() => {
-    let textUrl = `?age=${search.get("age")}&`;
-    const arr = Object.entries(taskAnswered);
-    for (let i = 0; i < arr.length; i++) {
-      textUrl += `${arr[i][0]}=${arr[i][1]}&`;
-    }
-    setSearchParams(textUrl);
-  }, []);
   return createPortal(
     <div className="fixed top-0 bottom-0 left-0 flex items-center justify-center right-0 bg-[rgba(0,0,0,0.62)]">
       <form className="bg-white flex  rounded-[16px] p-[24px] w-[600px] h-[182px] justify-between flex-col items-center">
@@ -56,7 +46,7 @@ export default function ModalPrivacyPolicy() {
               className={`${
                 disabled ? "opacity-40" : "opacity-100"
               } h-[55px] rounded-[10px]  w-[150px] bg-[#e44240] text-white flex items-center justify-center gap-2`}
-              href={`analyzing${searchParams}`}>
+              href={`analyzing?${search}`}>
               Continue <ArrowRight />
             </Link>
           ) : (

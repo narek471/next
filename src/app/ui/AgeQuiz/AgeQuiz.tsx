@@ -3,6 +3,7 @@ import age1 from "../../../../public/v6_img_1.png";
 import age2 from "../../../../public/v6_img_2.png";
 import age3 from "../../../../public/v6_img_3.png";
 import age4 from "../../../../public/v6_img_4.png";
+import Link from "next/link";
 
 export default function AgeQuiz() {
   return (
@@ -20,6 +21,21 @@ export default function AgeQuiz() {
         <AgeElQuiz ageEl="45-55" image={age3} />
         <AgeElQuiz ageEl="55+" image={age4} />
       </ul>
+      <div className="w-[536px] max-lg:w-[300] p-[32px]">
+        <p className="opacity-75  text-[#111113] text-[14px] text-center">
+          By choosing your age and continuing you agree to our{" "}
+          <Link
+            className="text-[#5773d6] underline"
+            href="https://quiz.kegel-plan.me/terms.html">
+            Terms & Conditions | Privacy Policy
+          </Link>
+          .Please review before continuing
+        </p>
+      </div>
+      <div className="opacity-75 text-[#111113] text-[14px] flex flex-col gap-1">
+        <p className="text-center">Appercut sp z o o </p>
+        <p className="text-center">Warsaw, Twarda 18, 00-105</p>
+      </div>
     </section>
   );
 }

@@ -26,9 +26,9 @@ export default function ProgressBar({
         </span>
         <span
           className={`h-[19px] w-[19px] rounded-full flex items-center justify-center ${
-            progress >= 90 ? "bg-black" : "bg-gray-200"
+            progress >= 95 ? "bg-black" : "bg-gray-200"
           }`}>
-          {progress >= 90 && <CheckIcon size={30} className="text-white z-1" />}
+          {progress >= 95 && <CheckIcon size={30} className="text-white z-1" />}
         </span>
         <div
           ref={ref}

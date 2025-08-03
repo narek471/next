@@ -8,6 +8,9 @@ import redFigure from "../../../../public/redFigure.svg";
 import access from "../../../../public/access.svg";
 import ModalPay from "./ModalPay";
 import ModalQueue from "./ModalQueue";
+import { useDispatch } from "react-redux";
+import { setSelectedPlan } from "@/app/store/reducers/userData";
+import { AnimatePresence } from "framer-motion";
 
 const arrPlans = [
   {
@@ -52,6 +55,7 @@ export default function GetPersonalPlan({ title }: { title: string }) {
   const [selected, setSelected] = useState(0);
   const [flag, setFlag] = useState(false);
   const [flagSuccess, setSuccessFlag] = useState(false);
+  const dispatch = useDispatch();
   useEffect(() => {
     const interval = setInterval(() => {
       setTimer((val) => {
@@ -74,8 +78,8 @@ export default function GetPersonalPlan({ title }: { title: string }) {
   return (
     <section
       id="personal-plan"
-      className="w-[600px] bg-[#f1f3f9] z-[400]  flex p-[32px] gap-5 items-center flex-col max-lg:w-[300px]">
-      <h2 className="text-[32px]  font-bold">{title}</h2>
+      className="w-[600px] bg-[#f1f3f9] z-[400]  flex p-[32px] gap-5 items-center flex-col max-md:w-1/1">
+      <h2 className="text-[32px] text-center   font-bold">{title}</h2>
       {!timer.result && (
         <div className="bg-[#111113] h-[42px] w-1/1 flex items-center justify-center gap-2 text-white rounded-[9px]">
           <Clock size={13} />
@@ -101,17 +105,18 @@ export default function GetPersonalPlan({ title }: { title: string }) {
           on your Kegel plan
         </p>
       </div>
-      <ul className="w-1/1 flex flex-col gap-5">
+      <ul className="w-1/1 flex flex-col items-center gap-5">
         {arrPlans.map((val, i) => (
           <div
             onClick={() => {
               setSelected(i);
+              dispatch(setSelectedPlan(i));
               setPercents({ was: val.wasPercent, discount: val.stayPercent });
             }}
             key={i}
             className={`flex items-center  ${
               selected == i ? "border-[#E44240] border-1" : ""
-            } bg-[#fff9] rounded-[9px] justify-between relative  h-[72px] w-1/1 p-[8px] gap-[16px]`}>
+            } bg-[#fff9] cursor-pointer rounded-[9px] justify-between relative  h-[72px] w-1/1 p-[8px] gap-[16px]`}>
             {val.populary && (
               <div
                 className={`${
@@ -122,49 +127,52 @@ export default function GetPersonalPlan({ title }: { title: string }) {
                 MOST POPULAR
               </div>
             )}
-            <div className="flex gap-4 items-center pl-2">
+            <div
+              className={`flex gap-4 items-center pl-2 ${
+                val.populary ? "max-md:mt-2" : ""
+              }`}>
               <CheckIcon
                 size={20}
                 className={`border-2 ${
                   selected == i
                     ? "bg-[#E44240] border-[#E44240] text-white"
                     : ""
-                } text-[#11111340] rounded-full`}
+                } text-[#11111340] rounded-full `}
               />
               <div>
                 <p
                   className={`${
                     selected == i ? "text-black" : "text-[#11111380]"
-                  } font-bold text-[16px]`}>
+                  } font-bold text-[16px] max-md:text-[14px]`}>
                   {val.title}
                 </p>
                 <p
                   className={`${
                     selected == i ? "text-black" : "text-[#11111340]"
-                  } text-[10px] flex gap-2`}>
+                  } text-[10px] max-md:text-[7px] flex gap-2`}>
                   <span className="line-through">{val.was}</span>
                   <span>{val.stay}</span>
                 </p>
               </div>
             </div>
-            <div className="relative z-10 w-[122px] h-[56px] flex items-center">
+            <div className="relative z-10 w-[122px] max-md:h-[100px] left-[10px]  flex items-center">
               {selected == i ? (
                 <Image
                   src={redFigure}
                   alt="red figure"
-                  className=" absolute  top-0 right-0 left-0 bottom-0 "
+                  className=" absolute max-md:h-1/1  "
                 />
               ) : (
                 <Image
                   src={figure}
                   alt="figure"
-                  className=" absolute opacity-40 top-0 right-0 left-0 bottom-0 "
+                  className=" absolute max-md:h-1/1 opacity-40  "
                 />
               )}
               <div
                 className={`w-1/1 z-100 ${
                   selected != i ? "opacity-50" : ""
-                } items-center flex flex-col `}>
+                } items-center flex flex-col  justify-center `}>
                 <p className="flex flex-col  text-center gap-1">
                   <span
                     className={`line-through ${
@@ -199,8 +207,13 @@ export default function GetPersonalPlan({ title }: { title: string }) {
         className="shadow-[0_15px_37px_#e44240a3] cursor-pointer font-bold text-[18px] bg-[#e44240] w-1/1 rounded-[100px] text-white p-[16px]">
         Get My Plan
       </button>
-      {flag && <ModalPay setModalFlag={setSuccessFlag} setFlag={setFlag} />}
-      {flagSuccess && <ModalQueue setFlag={setSuccessFlag} />}
+
+      <AnimatePresence>
+        {flag && <ModalPay setModalFlag={setSuccessFlag} setFlag={setFlag} />}
+      </AnimatePresence>
+      <AnimatePresence>
+        {flagSuccess && <ModalQueue setFlag={setSuccessFlag} />}
+      </AnimatePresence>
       <p className="text-[10px] text-center opacity-50">
         We’ve automatically applied the discount to your 1-month Kegel Plan.
         After 1 month, your subscription will be automatically renewed at the

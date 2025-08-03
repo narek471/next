@@ -3,11 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import { easeIn, Easing, motion } from "framer-motion";
 
 const MONTHS = [
-  "by September 4",
-  "by September 2",
-  "by August 31",
-  "by August 27",
-  "by August 27",
+  "by September 11",
+  "by September 9",
+  "by September 7",
+  "by September 5",
+  "by September 3",
 ];
 const cubic1 = [0.98, 0.03, 0, 0.08];
 

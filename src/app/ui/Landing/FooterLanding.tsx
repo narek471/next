@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function FooterLanding() {
   return (
-    <footer className="flex items-center justify-center text-white flex-col p-[32px] gap-5 w-1/1 bg-[#111113]">
-      <p className="text-[12px] w-[600px] max-lg:w-[300px] text-center opacity-50">
+    <footer className="flex  items-center justify-center text-white flex-col p-[32px] gap-5 w-1/1 bg-[#111113]">
+      <p className="text-[12px] w-[600px] max-md:w-[300px] text-center opacity-50">
         Disclaimer: Each individual’s results may vary from person to person
         based on health condition, body type, starting point, his or her unique
         background, dedication, desire, motivation, actions, and numerous other
@@ -16,7 +16,7 @@ export default function FooterLanding() {
         you should always consult with a physician or other health-care
         professional.
       </p>
-      <p className="text-center opacity-50">
+      <p className="text-center opacity-50 max-md:w-[240px]">
         Appercut sp. z o.o. Warsaw, Twarda 18, 00-105
       </p>
       <div className="flex flex-col gap-4 text-center items-center">

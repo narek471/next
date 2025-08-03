@@ -6,7 +6,7 @@ import BackGotIt from "@/app/ui/EndQuiz/BackGotIt";
 export default function BestThing() {
   return (
     <main className="flex items-center flex-col">
-      <section className="flex items-center max-lg:w-[320px] flex-col gap-6">
+      <section className="flex items-center max-md:w-[320px] flex-col gap-6">
         <h2 className="text-[23px] font-bold text-center">
           The best thing? It takes just 5 min a day
         </h2>

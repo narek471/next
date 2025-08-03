@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 
 export default function Continue({
   path,
@@ -13,34 +12,18 @@ export default function Continue({
   path: string;
   disabled?: boolean;
 }) {
-  const { taskAnswered } = useSelector(
-    (state: {
-      userData: {
-        taskAnswered: { [key: number]: string };
-        selected: number;
-      };
-    }) => state.userData
-  );
-
   const search = useSearchParams();
-
-  const [searchParams, setSearchParams] = useState("");
+  const [searchParam, setSearchParam] = useState("");
   useEffect(() => {
-    let textUrl = `?age=${search.get("age")}&`;
-    const arr = Object.entries(taskAnswered);
-    for (let i = 0; i < arr.length; i++) {
-      textUrl += `${arr[i][0]}=${arr[i][1]}&`;
-    }
-
-    setSearchParams(textUrl);
-  }, [taskAnswered]);
+    setSearchParam(search.toString());
+  }, [search]);
   return (
     <section className="flex gap-2 w-1/1 mt-[15px] font-bold ">
       <button className="w-1/1" disabled={disabled}>
         {disabled !== false ? (
           <Link
             className={` h-[55px] rounded-[10px] font-bold shadow-[0px_10px_40px_#e44240]  bg-[#e44240] text-white flex items-center justify-center gap-2`}
-            href={`/quiz/${path}${searchParams}`}>
+            href={`/quiz/${path}?${searchParam}`}>
             Continue
           </Link>
         ) : (

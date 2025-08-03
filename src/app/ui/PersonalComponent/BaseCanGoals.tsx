@@ -9,20 +9,18 @@ const cubic1 = [0.98, 0.03, 0, 0.08];
 
 export default function BaseCanGoals() {
   return (
-    <section className="flex items-center max-lg:w-[320px] flex-col gap-6">
+    <section className="flex items-center  max-md:max-w-[320px] flex-col gap-6">
       <h2 className="text-[22px] font-bold text-center">
         Based on your personal goals you can
       </h2>
       <p className="text-[15px] ">
-        Improve <span className="font-bold">Erectile Function</span> and
-        <span className="font-bold">Ejaculation Control</span>
+        Improve <span className="font-bold">Erectile Function</span>
       </p>
       <DateAnimation />
       <video
         className="w-[450px] max-lg:w-[300px] max-lg:h-[200px] h-[279px]"
-        autoPlay
-        loop>
-        <source src="https://quiz.kegel-plan.me/video/en/EN_video_graph_pp1.mp4" />
+        autoPlay>
+        <source src="https://quiz.kegel-plan.me/video/en/EN_video_graph_pp2.mp4" />
       </video>
       <p className="text-[12px] text-gray-500">
         *for illustration purposes only

@@ -3,11 +3,11 @@ import final from "../../../../public/EN_video_graph_final.webp";
 
 export default function ExpectImprovements() {
   return (
-    <section className="flex items-center max-lg:w-[320px] w-[620px] bg-white z-[500] flex-col gap-6">
+    <section className="flex items-center max-md:w-[320px] w-[620px] bg-white flex-col gap-6">
       <h2 className="text-[22px] font-bold text-center">
         When to Expect Improvements
       </h2>
-      <p className="text-[15px] ">
+      <p className="text-[15px] text-center">
         Based on our data you can reach noticeable improvements
       </p>
       <div className="flex gap-2 items-center">
@@ -20,7 +20,7 @@ export default function ExpectImprovements() {
       <Image
         src={final}
         alt="image"
-        className="w-[520px] max-lg:w-[300px] max-lg:h-[200px] h-[279px]"
+        className="w-[520px] max-md:w-[300px] max-lg:h-[200px] h-[279px]"
       />
       <p className="text-[12px] text-gray-500">
         *for illustration purposes only

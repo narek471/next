@@ -6,21 +6,24 @@ import { CheckIcon } from "lucide-react";
 import { useParams, useSearchParams } from "next/navigation";
 
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelected as setSelectedStore } from "@/app/store/reducers/userData";
 
 export default function Quiz({ data }: { data: IQuiz }) {
   const [selected, setSelected] = useState(-1);
   const dispatch = useDispatch();
   const task = useParams()["slug"];
-  const searchParam = useSearchParams();
+  const { taskAnswered } = useSelector(
+    (state: {
+      userData: { progress: number; taskAnswered: { [key: number]: number } };
+    }) => state.userData
+  );
   useEffect(() => {
-    console.log(searchParam.get(task));
-    if (searchParam.get(task) || searchParam.get(task) == "0") {
-      setSelected(Number(searchParam.get(task)));
-      console.log(selected);
+    console.log(taskAnswered);
+    if (taskAnswered[+task!] || taskAnswered[+task!] == 0) {
+      setSelected(taskAnswered[+task!]);
     }
-  }, []);
+  }, [taskAnswered, task]);
   useEffect(() => {
     if (selected != -1) {
       dispatch(setSelectedStore(selected));
@@ -28,13 +31,11 @@ export default function Quiz({ data }: { data: IQuiz }) {
     }
   }, [selected]);
   return (
-    <section className="mt-[20px] w-[500px] max-lg:max-w-[300px] items-center flex flex-col gap-[30px]">
+    <section className="mt-[20px] w-[500px] max-md:max-w-[300px] items-center flex flex-col gap-[30px]">
       <div className="w-1/1 flex flex-col gap-5">
-        <h2 className="text-xl max-lg:text-[15px] font-bold">
-          {data.question}
-        </h2>
+        <h2 className="text-xl  font-bold">{data.question}</h2>
         <ul className="flex flex-col gap-2">
-          {data.answers.map((val, i) => (
+          {data.answers!.map((val, i) => (
             <button
               onClick={() => {
                 setSelected(i);
@@ -54,7 +55,7 @@ export default function Quiz({ data }: { data: IQuiz }) {
                   </span>
                 </p>
               ) : (
-                <p className="font-bold">{val as string}</p>
+                <p className="font-bold text-left">{val as string}</p>
               )}
               <span className="h-[20px] rounded-full w-[20px] text-black bg-white">
                 {selected === i && <CheckIcon size={20} />}

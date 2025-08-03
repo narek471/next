@@ -5,7 +5,7 @@ import { Comment } from "@/app/lib/comments";
 
 export default function CommentAnswer({ data }: { data: Comment }) {
   return (
-    <div className="w-[500px] max-lg:w-[300px] rounded-[10px] shadow-md p-5 gap-5">
+    <div className="w-[500px] max-md:w-[300px] max-lg:w-[300px] rounded-[10px] shadow-md p-5 gap-5">
       <div className="flex justify-between  text-black">
         <ol className="flex gap-[1px]">
           {new Array(5).fill(null).map((val, i) => (
