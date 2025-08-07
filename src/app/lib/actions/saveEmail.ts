@@ -8,9 +8,9 @@ export default async function saveEmail(email: string) {
  
     const newQueue=queue.emails as string[]
     newQueue.push(email)
-    console.log(email)
+
     await fs.writeFile(resolve(`src/app/lib/queue.json`),JSON.stringify({
-      cards:queue.cards,
+
       emails:newQueue,
     }),(err)=>{
       console.log(err)
