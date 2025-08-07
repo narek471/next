@@ -59,31 +59,30 @@ export default function ConfrimEmail() {
           Your personal data is safe with us.We`ll use your email for updates,
           receipts, and subscription details.
         </p>
-        <Suspense fallback={null}>
-          <button
-            className="w-1/1"
-            disabled={disabled}
-            onClick={() => {
-              if (email) {
-                if (validateEmail(email)) {
-                  saveEmail(email);
-                }
+
+        <button
+          className="w-1/1"
+          disabled={disabled}
+          onClick={() => {
+            if (email) {
+              if (validateEmail(email)) {
+                saveEmail(email);
               }
-            }}>
-            {disabled == false ? (
-              <Link
-                className={` h-[55px] rounded-[10px] font-bold shadow-[0px_10px_40px_#e44240]  bg-[#e44240] text-white flex items-center justify-center gap-2`}
-                href={`/quiz/landing?${searchParam}`}>
-                Continue
-              </Link>
-            ) : (
-              <p
-                className={` h-[55px] rounded-[10px] font-bold  bg-[#cacaca] text-white flex items-center justify-center gap-2`}>
-                Continue
-              </p>
-            )}
-          </button>
-        </Suspense>
+            }
+          }}>
+          {disabled == false ? (
+            <Link
+              className={` h-[55px] rounded-[10px] font-bold shadow-[0px_10px_40px_#e44240]  bg-[#e44240] text-white flex items-center justify-center gap-2`}
+              href={`/quiz/landing?${searchParam}`}>
+              Continue
+            </Link>
+          ) : (
+            <p
+              className={` h-[55px] rounded-[10px] font-bold  bg-[#cacaca] text-white flex items-center justify-center gap-2`}>
+              Continue
+            </p>
+          )}
+        </button>
       </form>
     </main>
   );

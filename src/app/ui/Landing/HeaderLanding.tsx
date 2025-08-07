@@ -2,15 +2,11 @@
 import Image from "next/image";
 import logo from "../../../../public/Kegel Power v5.png";
 import { useEffect, useState } from "react";
+import { useLocalStorage } from "@/app/lib/hooks/useLocalStorage";
 
 export default function HeaderLanding() {
   const [timer, setTimer] = useState({ min: 10, seconds: 0, result: false });
-  const [storage, setStorage] = useState<string>("");
-  useEffect(() => {
-    if (localStorage.getItem("access")) {
-      setStorage(localStorage.getItem("access")!);
-    }
-  }, []);
+  const { storage } = useLocalStorage();
   useEffect(() => {
     const interval = setInterval(() => {
       setTimer((val) => {
@@ -63,7 +59,7 @@ export default function HeaderLanding() {
             })
           }
           className={`cursor-pointer ${
-            localStorage.getItem("access") ? "bg-[#e44240]" : "bg-[#5773d6]"
+            storage ? "bg-[#e44240]" : "bg-[#5773d6]"
           } text-[16px] w-[143px] text-white rounded-[9px] font-bold`}>
           Get My Plan
         </button>

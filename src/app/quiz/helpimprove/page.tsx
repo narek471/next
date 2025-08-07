@@ -29,9 +29,8 @@ export default function HelpImprove() {
           <HelpItem key={i} title={val.title} image={val.image} delay={i / 3} />
         ))}
       </ul>
-      <Suspense fallback={null}>
-        <BackGotIt path="bestthing" backpath="trusted" />
-      </Suspense>
+
+      <BackGotIt path="bestthing" backpath="trusted" />
     </main>
   );
 }

@@ -34,9 +34,8 @@ export default function FinalAdjustment() {
         <p className="text-[12px] text-gray-500">
           *statistics from internal survey
         </p>
-        <Suspense fallback={null}>
-          <Continue path={"confrim-email"} />
-        </Suspense>
+
+        <Continue path={"confrim-email"} />
       </section>
     </main>
   );

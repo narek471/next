@@ -10,6 +10,7 @@ import CreditCard from "./CreditCard";
 import PayPal from "./PayPal";
 import PayPalBlue from "./PayPalBlue";
 import CreditCardBlue from "./CreditCardBlue";
+import { useLocalStorage } from "@/app/lib/hooks/useLocalStorage";
 
 export default function ModalPay({
   setFlag,
@@ -21,14 +22,7 @@ export default function ModalPay({
   setDiscount?: (arg: boolean) => void;
 }) {
   const [currPay, setCurPay] = useState(false);
-  const [access, setAccess] = useState<string | null>("");
-  useEffect(() => {
-    if (localStorage.getItem("access")) {
-      setAccess(localStorage.getItem("access"));
-    } else {
-      setAccess(null);
-    }
-  }, [localStorage]);
+  const { storage } = useLocalStorage();
   return createPortal(
     <div className="fixed top-0 bottom-0 left-0 right-0 w-1/1 flex items-center justify-center z-[1000] h-screen bg-[rgba(0,0,0,0.66)]">
       <motion.form
@@ -48,7 +42,7 @@ export default function ModalPay({
           type="button"
           className="cursor-pointer flex flex-row-reverse"
           onClick={() => {
-            if (access) {
+            if (storage) {
               setFlag(false);
             } else if (setDiscount) {
               setDiscount(true);
@@ -82,12 +76,12 @@ export default function ModalPay({
           </button>
         </div>
         {currPay ? (
-          localStorage.getItem("access") ? (
+          storage ? (
             <PayPal />
           ) : (
             <PayPalBlue />
           )
-        ) : localStorage.getItem("access") ? (
+        ) : storage ? (
           <CreditCard />
         ) : (
           <CreditCardBlue />

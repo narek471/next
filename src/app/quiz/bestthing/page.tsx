@@ -30,9 +30,8 @@ export default function BestThing() {
           </p>
         </div>
       </section>
-      <Suspense fallback={null}>
-        <BackGotIt path="finaladjustment" backpath="helpimprove" />
-      </Suspense>
+
+      <BackGotIt path="finaladjustment" backpath="helpimprove" />
     </main>
   );
 }

@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import logo from "../../../../public/Kegel Power v5.png";
 import Image from "next/image";
 import discount from "../../../../public/discount.png";
+import { useLocalStorage } from "@/app/lib/hooks/useLocalStorage";
 
 export default function SuperDiscount({
   setFlag,
@@ -11,6 +12,7 @@ export default function SuperDiscount({
   setFlag: (arg: boolean) => void;
   setDiscount: (arg: boolean) => void;
 }) {
+  const { saveToStorage } = useLocalStorage();
   return createPortal(
     <div className="flex items-center flex-col fixed z-[1000] w-1/1 top-0 right-0 left-0 bottom-0 h-screen bg-[#111113]">
       <div>
@@ -42,8 +44,8 @@ export default function SuperDiscount({
           </p>
           <button
             onClick={() => {
+              saveToStorage("true");
               window.location.reload();
-              localStorage.setItem("access", "true");
             }}
             className={`mt-[30px] h-[55px] w-1/1 rounded-[100px] font-bold  cursor-pointer 
             
