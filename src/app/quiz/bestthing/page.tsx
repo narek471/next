@@ -2,6 +2,7 @@ import gantele from "../../../../public/gantele.svg";
 import Image from "next/image";
 import fivemin from "../../../../public/EN_img_5min_day.webp";
 import BackGotIt from "@/app/ui/EndQuiz/BackGotIt";
+import { Suspense } from "react";
 
 export default function BestThing() {
   return (
@@ -29,7 +30,9 @@ export default function BestThing() {
           </p>
         </div>
       </section>
-      <BackGotIt path="finaladjustment" backpath="helpimprove" />
+      <Suspense fallback={null}>
+        <BackGotIt path="finaladjustment" backpath="helpimprove" />
+      </Suspense>
     </main>
   );
 }
