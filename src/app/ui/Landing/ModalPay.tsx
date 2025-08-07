@@ -2,22 +2,33 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import allCard from "../../../../public/all_cards.webp";
 import paypal from "../../../../public/icon_paypal.webp";
 import Image from "next/image";
 import CreditCard from "./CreditCard";
 import PayPal from "./PayPal";
+import PayPalBlue from "./PayPalBlue";
+import CreditCardBlue from "./CreditCardBlue";
 
 export default function ModalPay({
   setFlag,
   setModalFlag,
+  setDiscount,
 }: {
   setFlag: (arg: boolean) => void;
-  setModalFlag: (arg: boolean) => void;
+  setModalFlag?: (arg: boolean) => void;
+  setDiscount?: (arg: boolean) => void;
 }) {
   const [currPay, setCurPay] = useState(false);
-
+  const [access, setAccess] = useState<string | null>("");
+  useEffect(() => {
+    if (localStorage.getItem("access")) {
+      setAccess(localStorage.getItem("access"));
+    } else {
+      setAccess(null);
+    }
+  }, [localStorage]);
   return createPortal(
     <div className="fixed top-0 bottom-0 left-0 right-0 w-1/1 flex items-center justify-center z-[1000] h-screen bg-[rgba(0,0,0,0.66)]">
       <motion.form
@@ -28,13 +39,21 @@ export default function ModalPay({
         onSubmit={(e) => {
           e.preventDefault();
           setFlag(false);
-          setModalFlag(true);
+          if (setModalFlag) {
+            setModalFlag(true);
+          }
         }}
         className="h-[97%]  w-[585px] mt-[100px] max-md:w-1/1 bg-white rounded-tl-[16px] p-[24px] flex flex-col">
         <button
           type="button"
           className="cursor-pointer flex flex-row-reverse"
-          onClick={() => setFlag(false)}>
+          onClick={() => {
+            if (access) {
+              setFlag(false);
+            } else if (setDiscount) {
+              setDiscount(true);
+            }
+          }}>
           <X />
         </button>{" "}
         <h2 className="text-[20px] font-bold text-center">
@@ -62,7 +81,17 @@ export default function ModalPay({
             <Image height={39} width={100} src={allCard} alt="alt card" />
           </button>
         </div>
-        {currPay ? <PayPal /> : <CreditCard />}
+        {currPay ? (
+          localStorage.getItem("access") ? (
+            <PayPal />
+          ) : (
+            <PayPalBlue />
+          )
+        ) : localStorage.getItem("access") ? (
+          <CreditCard />
+        ) : (
+          <CreditCardBlue />
+        )}
       </motion.form>
     </div>,
     document.body

@@ -11,7 +11,7 @@ export default function ExpectImprovements() {
         Based on our data you can reach noticeable improvements
       </p>
       <div className="flex gap-2 items-center">
-        <p className="text-xl text-[#5773d6] font-bold">by August 21</p>
+        <p className="text-xl text-[#5773d6] font-bold">by September 4</p>
         <video playsInline width={90} autoPlay>
           <source src="https://quiz.kegel-plan.me/video/en/EN_video_34_faster.mp4" />
         </video>

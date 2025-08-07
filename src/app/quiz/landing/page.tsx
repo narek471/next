@@ -11,17 +11,28 @@ import guard from "../../../../public/guard.svg";
 import cards from "../../../../public/visa_mc_pp_ae.webp";
 import MoneyBack from "@/app/ui/Landing/MoneyBack";
 import startVideo from "../../../../public/runVideo.svg";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import GetPersonalPlanBlue from "@/app/ui/Landing/GetPersonalPlanBlue";
 
 export default function Landing() {
   const [flag, setFlag] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
+  const [storage, setStorage] = useState<string>("");
+  useEffect(() => {
+    if (localStorage.getItem("access")) {
+      setStorage(localStorage.getItem("access")!);
+    }
+  }, []);
   return (
     <div className="mt-[100px] gap-10 flex flex-col items-center">
       <PersonalPlan />
       <AreasImprovements />
       <ExpectImprovements />
-      <GetPersonalPlan title="Get your Personal Kegel Plan" />
+      {storage ? (
+        <GetPersonalPlan title="Get your Personal Kegel Plan" />
+      ) : (
+        <GetPersonalPlanBlue off title="Get your Personal Kegel Plan" />
+      )}
       <Image
         src={ratingTrusted}
         alt="rating trusted"
@@ -58,7 +69,12 @@ export default function Landing() {
         <Image src={sound} alt="sount" />
         Make sure your sound is turned on
       </p>
-      <GetPersonalPlan title="See the result in 4 weeks" />
+      {storage ? (
+        <GetPersonalPlan title="See the result in 4 weeks" />
+      ) : (
+        <GetPersonalPlanBlue title="See the result in 4 weeks" />
+      )}
+
       <MoneyBack />
       <p className="text-[14px] font-bold text-center  flex gap-2 items-center">
         <Image src={guard} alt="guard" />

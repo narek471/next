@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import saveEmail from "@/app/lib/actions/saveEmail";
 import Link from "next/link";
 
-export function validateEmail(email: string) {
+function validateEmail(email: string) {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
 }

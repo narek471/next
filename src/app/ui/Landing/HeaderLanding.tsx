@@ -5,6 +5,12 @@ import { useEffect, useState } from "react";
 
 export default function HeaderLanding() {
   const [timer, setTimer] = useState({ min: 10, seconds: 0, result: false });
+  const [storage, setStorage] = useState<string>("");
+  useEffect(() => {
+    if (localStorage.getItem("access")) {
+      setStorage(localStorage.getItem("access")!);
+    }
+  }, []);
   useEffect(() => {
     const interval = setInterval(() => {
       setTimer((val) => {
@@ -39,7 +45,9 @@ export default function HeaderLanding() {
           </div>
         ) : (
           <div className="flex flex-col gap-2">
-            <p className=" text-[14px] ">61% Discount reserved for</p>
+            <p className=" text-[14px] ">
+              {storage ? "61%" : "51%"} Discount reserved for
+            </p>
             <p className="font-bold text-[#e44240] text-[18px]">
               {timer.min < 10 && "0"}
               {timer.min}:{timer.seconds < 10 && "0"}
@@ -48,13 +56,15 @@ export default function HeaderLanding() {
           </div>
         )}
         <button
-          onClick={(e) =>
+          onClick={() =>
             document.getElementById("personal-plan")?.scrollIntoView({
               behavior: "smooth",
               block: "start",
             })
           }
-          className="cursor-pointer bg-[#e44240] text-[16px] w-[143px] text-white rounded-[9px] font-bold">
+          className={`cursor-pointer ${
+            localStorage.getItem("access") ? "bg-[#e44240]" : "bg-[#5773d6]"
+          } text-[16px] w-[143px] text-white rounded-[9px] font-bold`}>
           Get My Plan
         </button>
       </div>

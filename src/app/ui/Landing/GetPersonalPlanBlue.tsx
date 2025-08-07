@@ -1,16 +1,16 @@
 "use client";
 import { CheckIcon, Clock } from "lucide-react";
 import { useEffect, useState } from "react";
-import gift from "../../../../public/gift-red.webp";
 import Image from "next/image";
 import figure from "../../../../public/figure.svg";
-import redFigure from "../../../../public/redFigure.svg";
+import blueFigure from "../../../../public/figureBlue.svg";
 import access from "../../../../public/access.svg";
 import ModalPay from "./ModalPay";
 import ModalQueue from "./ModalQueue";
 import { useDispatch } from "react-redux";
 import { setSelectedPlan } from "@/app/store/reducers/userData";
 import { AnimatePresence } from "framer-motion";
+import SuperDiscount from "./SuperDiscount";
 
 const arrPlans = [
   {
@@ -18,10 +18,10 @@ const arrPlans = [
     wasPercent: "34%",
     stayPercent: "48%",
     was: "10.59 USD",
-    stay: "5.50 USD",
+    stay: "6.99 USD",
     perDay: {
       was: "1.50 USD",
-      stay: "0.79 USD",
+      stay: "0.99 USD",
     },
     description:
       "We’ve automatically applied the discount to your 1-week Kegel Plan. Please note that your subscription will be automatically renewed at the 31 USD per 1 month at the end of your 1-week Kegel Plan and will then be continuously renewed every - 1 month until you cancel. If you want to manage your subscription, you may do so visiting Billing Center or in the Dr. Kegel app.",
@@ -31,11 +31,11 @@ const arrPlans = [
     wasPercent: "51%",
     stayPercent: "61%",
     was: "31.00 USD",
-    stay: "11.99 USD",
+    stay: "15.19 USD",
     populary: true,
     perDay: {
       was: "1.00 USD",
-      stay: "0.39 USD",
+      stay: "0.49 USD",
     },
     description:
       "We’ve automatically applied the discount to your 1-month Kegel Plan. After 1 month, your subscription will be automatically renewed at the full price of 31 USD per 1 month and will then be continuously renewed every 1 month until you cancel. If you want to manage your subscription, you may do so visiting Billing Center or in the Dr. Kegel app.",
@@ -45,23 +45,28 @@ const arrPlans = [
     wasPercent: "51%",
     stayPercent: "60%",
     was: "53.04 USD",
-    stay: "21.49 USD",
+    stay: "25.99 USD",
     perDay: {
       was: "0.59 USD",
-      stay: "0.24 USD",
+      stay: "0.29 USD",
     },
     description:
       "We’ve automatically applied the discount to your 3-months Kegel Plan. After 3 months, your subscription will be automatically renewed at the full price of 53.04 USD per 3 months and will then be continuously renewed every 3 months until you cancel. If you want to manage your subscription, you may do so visiting Billing Center or in the Dr. Kegel app.",
   },
 ];
 
-export default function GetPersonalPlan({ title }: { title: string }) {
+export default function GetPersonalPlanBlue({
+  title,
+  off,
+}: {
+  title: string;
+  off?: boolean;
+}) {
   const [timer, setTimer] = useState({ min: 10, seconds: 0, result: false });
-  const [percents, setPercents] = useState({ was: "51%", discount: "61%" });
-  const [selected, setSelected] = useState(0);
   const [description, setDescription] = useState("");
+  const [selected, setSelected] = useState(0);
+  const [discount, setDiscount] = useState(false);
   const [flag, setFlag] = useState(false);
-  const [flagSuccess, setSuccessFlag] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     const interval = setInterval(() => {
@@ -87,8 +92,8 @@ export default function GetPersonalPlan({ title }: { title: string }) {
       id="personal-plan"
       className="w-[600px] bg-[#f1f3f9] z-[400]  flex p-[32px] gap-5 items-center flex-col max-md:w-1/1">
       <h2 className="text-[32px] text-center   font-bold">{title}</h2>
-      {!timer.result && (
-        <div className="bg-[#111113] h-[42px] w-1/1 flex items-center justify-center gap-2 text-white rounded-[9px]">
+      {off && !timer.result && (
+        <div className="bg-[#E44240] h-[42px] w-1/1 flex items-center justify-center gap-2 text-white rounded-[9px]">
           <Clock size={13} />
           <p className="text-[13px] font-bold ">
             This offer ends in
@@ -101,35 +106,24 @@ export default function GetPersonalPlan({ title }: { title: string }) {
           </p>
         </div>
       )}
-      <div className="border-[2px] w-1/1 border-[#E44240] flex items-center rounded-[9px] gap-[10px] p-[12px] bg-[#fdf1f0]">
-        <Image width={64} src={gift} alt="gift" />
-        <p className="font-bold text-[16px]">
-          Get a{" "}
-          <span className=" line-through text-[#11111380]">
-            {percents.was}{" "}
-          </span>
-          <span className="text-[#E44240]">{percents.discount} discount </span>
-          on your Kegel plan
-        </p>
-      </div>
+
       <ul className="w-1/1 flex flex-col items-center gap-5">
         {arrPlans.map((val, i) => (
           <div
             onClick={() => {
               setSelected(i);
               dispatch(setSelectedPlan(i));
-              setPercents({ was: val.wasPercent, discount: val.stayPercent });
               setDescription(val.description);
             }}
             key={i}
             className={`flex items-center  ${
-              selected == i ? "border-[#E44240] border-1" : ""
+              selected == i ? "border-[#5773d6] border-1" : ""
             } bg-[#fff9] cursor-pointer rounded-[9px] justify-between relative  h-[72px] w-1/1 p-[8px] gap-[16px]`}>
             {val.populary && (
               <div
                 className={`${
                   selected == i
-                    ? "bg-[#E44240] text-white"
+                    ? "bg-[#5773d6] text-white"
                     : "bg-[#ebecf2] text-[#11111340]"
                 } rounded-[50px] font-bold text-[12px] pl-[13px] top-[-10px] pr-[13px] text-[#11111340] absolute`}>
                 MOST POPULAR
@@ -143,7 +137,7 @@ export default function GetPersonalPlan({ title }: { title: string }) {
                 size={20}
                 className={`border-2 ${
                   selected == i
-                    ? "bg-[#E44240] border-[#E44240] text-white"
+                    ? "bg-[#5773d6] border-[#5773d6] text-white"
                     : ""
                 } text-[#11111340] rounded-full `}
               />
@@ -166,7 +160,7 @@ export default function GetPersonalPlan({ title }: { title: string }) {
             <div className="relative z-10 w-[122px] max-md:h-[100px] left-[10px]  flex items-center">
               {selected == i ? (
                 <Image
-                  src={redFigure}
+                  src={blueFigure}
                   alt="red figure"
                   className=" absolute max-md:h-1/1  "
                 />
@@ -190,7 +184,7 @@ export default function GetPersonalPlan({ title }: { title: string }) {
                   </span>
                   <span
                     className={`${
-                      selected == i ? "text-white" : "text-[#E44240]"
+                      selected == i ? "text-white" : "text-[#5773d6]"
                     }  leading-1.5 font-bold text-[16px]`}>
                     {val.perDay.stay}
                   </span>
@@ -212,16 +206,16 @@ export default function GetPersonalPlan({ title }: { title: string }) {
       </p>
       <button
         onClick={() => setFlag(true)}
-        className="shadow-[0_15px_37px_#e44240a3] cursor-pointer font-bold text-[18px] bg-[#e44240] w-1/1 rounded-[100px] text-white p-[16px]">
+        className="shadow-[0_15px_37px_#5773d6] cursor-pointer font-bold text-[18px] bg-[#5773d6] w-1/1 rounded-[100px] text-white p-[16px]">
         Get My Plan
       </button>
 
       <AnimatePresence>
-        {flag && <ModalPay setModalFlag={setSuccessFlag} setFlag={setFlag} />}
+        {flag && <ModalPay setDiscount={setDiscount} setFlag={setFlag} />}
       </AnimatePresence>
-      <AnimatePresence>
-        {flagSuccess && <ModalQueue setFlag={setSuccessFlag} />}
-      </AnimatePresence>
+      {discount && (
+        <SuperDiscount setDiscount={setDiscount} setFlag={setFlag} />
+      )}
       <p className="text-[10px] text-center opacity-50">{description}</p>
     </section>
   );
