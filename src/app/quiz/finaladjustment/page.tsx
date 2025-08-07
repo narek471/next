@@ -1,5 +1,6 @@
 import Continue from "@/app/ui/EndQuiz/Continue";
 import DateEndAnimation from "@/app/ui/EndQuiz/DateEndAnimation";
+import { Suspense } from "react";
 
 export default function FinalAdjustment() {
   return (
@@ -33,8 +34,9 @@ export default function FinalAdjustment() {
         <p className="text-[12px] text-gray-500">
           *statistics from internal survey
         </p>
-
-        <Continue path={"confrim-email"} />
+        <Suspense fallback={null}>
+          <Continue path={"confrim-email"} />
+        </Suspense>
       </section>
     </main>
   );

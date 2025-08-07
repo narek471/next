@@ -2,7 +2,7 @@
 import HelpItem from "@/app/ui/EndQuiz/HelpItem";
 import BackGotIt from "@/app/ui/EndQuiz/BackGotIt";
 import { arrHelps, arrHelps1, arrHelps2 } from "@/app/lib/helps";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import { useSearchParams } from "next/navigation";
 
@@ -29,7 +29,9 @@ export default function HelpImprove() {
           <HelpItem key={i} title={val.title} image={val.image} delay={i / 3} />
         ))}
       </ul>
-      <BackGotIt path="bestthing" backpath="trusted" />
+      <Suspense fallback={null}>
+        <BackGotIt path="bestthing" backpath="trusted" />
+      </Suspense>
     </main>
   );
 }
