@@ -40,7 +40,7 @@ export default function ModalPay({
             redirect("/thank?" + search);
           }
         }}
-        className="h-[97%]  w-[585px] mt-[100px] max-md:w-1/1 bg-white rounded-tl-[16px] p-[24px] flex flex-col">
+        className="h-[97%] overflow-y-scroll w-[585px] mt-[100px] max-md:w-1/1 bg-white rounded-tl-[16px] p-[24px] flex flex-col">
         <button
           type="button"
           className="cursor-pointer flex flex-row-reverse"

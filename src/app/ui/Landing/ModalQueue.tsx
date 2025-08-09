@@ -8,7 +8,7 @@ export default function ModalQueue() {
   const search = useSearchParams().toString();
   useEffect(() => {
     const timer = setTimeout(() => {
-      redirect("/quiz/landing" + search);
+      redirect("/quiz/landing?" + search);
     }, 5000);
     return () => {
       clearTimeout(timer);
