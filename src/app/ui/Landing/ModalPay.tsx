@@ -2,7 +2,7 @@
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import allCard from "../../../../public/all_cards.webp";
 import paypal from "../../../../public/icon_paypal.webp";
 import Image from "next/image";
@@ -11,6 +11,7 @@ import PayPal from "./PayPal";
 import PayPalBlue from "./PayPalBlue";
 import CreditCardBlue from "./CreditCardBlue";
 import { useLocalStorage } from "@/app/lib/hooks/useLocalStorage";
+import { redirect, useSearchParams } from "next/navigation";
 
 export default function ModalPay({
   setFlag,
@@ -23,6 +24,7 @@ export default function ModalPay({
 }) {
   const [currPay, setCurPay] = useState(false);
   const { storage } = useLocalStorage();
+  const search = useSearchParams().toString();
   return createPortal(
     <div className="fixed top-0 bottom-0 left-0 right-0 w-1/1 flex items-center justify-center z-[1000] h-screen bg-[rgba(0,0,0,0.66)]">
       <motion.form
@@ -35,6 +37,7 @@ export default function ModalPay({
           setFlag(false);
           if (setModalFlag) {
             setModalFlag(true);
+            redirect("/thank?" + search);
           }
         }}
         className="h-[97%]  w-[585px] mt-[100px] max-md:w-1/1 bg-white rounded-tl-[16px] p-[24px] flex flex-col">
@@ -66,7 +69,9 @@ export default function ModalPay({
           </button>
           <button
             type="button"
-            onClick={() => setCurPay(false)}
+            onClick={() => {
+              setCurPay(false);
+            }}
             className={`${
               !currPay
                 ? "bg-[#eef1fb] border-[#5773d6]"

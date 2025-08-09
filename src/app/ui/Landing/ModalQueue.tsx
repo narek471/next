@@ -1,15 +1,14 @@
+"use client";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { redirect, useSearchParams } from "next/navigation";
 
-export default function ModalQueue({
-  setFlag,
-}: {
-  setFlag: (arg: boolean) => void;
-}) {
+export default function ModalQueue() {
+  const search = useSearchParams().toString();
   useEffect(() => {
     const timer = setTimeout(() => {
-      setFlag(false);
+      redirect("/quiz/landing" + search);
     }, 5000);
     return () => {
       clearTimeout(timer);

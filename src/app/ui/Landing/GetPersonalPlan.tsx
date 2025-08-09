@@ -7,10 +7,10 @@ import figure from "../../../../public/figure.svg";
 import redFigure from "../../../../public/redFigure.svg";
 import access from "../../../../public/access.svg";
 import ModalPay from "./ModalPay";
-import ModalQueue from "./ModalQueue";
 import { useDispatch } from "react-redux";
 import { setSelectedPlan } from "@/app/store/reducers/userData";
 import { AnimatePresence } from "framer-motion";
+import { redirect, useSearchParams } from "next/navigation";
 
 const arrPlans = [
   {
@@ -63,6 +63,7 @@ export default function GetPersonalPlan({ title }: { title: string }) {
   const [flag, setFlag] = useState(false);
   const [flagSuccess, setSuccessFlag] = useState(false);
   const dispatch = useDispatch();
+  const search = useSearchParams().toString();
   useEffect(() => {
     const interval = setInterval(() => {
       setTimer((val) => {
@@ -82,6 +83,7 @@ export default function GetPersonalPlan({ title }: { title: string }) {
       }
     };
   }, []);
+
   return (
     <section
       id="personal-plan"
@@ -219,9 +221,7 @@ export default function GetPersonalPlan({ title }: { title: string }) {
       <AnimatePresence>
         {flag && <ModalPay setModalFlag={setSuccessFlag} setFlag={setFlag} />}
       </AnimatePresence>
-      <AnimatePresence>
-        {flagSuccess && <ModalQueue setFlag={setSuccessFlag} />}
-      </AnimatePresence>
+
       <p className="text-[10px] text-center opacity-50">{description}</p>
     </section>
   );
