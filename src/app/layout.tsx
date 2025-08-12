@@ -11,6 +11,13 @@ const robotoSans = Roboto({
 
 export const metadata: Metadata = {
   title: "Creating Sexual Wellness Plan",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "./favicon-32x32.png", type: "image/png" },
+    ],
+    apple: [{ url: "./apple-icon.png" }],
+  },
   description:
     "Improve men`s health in 5 min/day.Feel confident & happy with the most downloaded intimate wellness app in the World",
 };
