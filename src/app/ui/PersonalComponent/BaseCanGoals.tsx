@@ -19,7 +19,8 @@ export default function BaseCanGoals() {
       <DateAnimation />
       <video
         className="w-[450px] max-lg:w-[300px] max-lg:h-[200px] h-[279px]"
-        autoPlay>
+        autoPlay
+        playsInline>
         <source src="https://quiz.kegel-plan.me/video/en/EN_video_graph_pp2.mp4" />
       </video>
       <p className="text-[12px] text-gray-500">

@@ -11,7 +11,7 @@ export default function PersonalNext() {
   const search = useSearchParams().toString();
 
   return (
-    <section className="flex gap-2 w-1/1 mt-[15px] font-bold ">
+    <section className="flex gap-2 w-1/1 mt-[15px]  font-bold ">
       <button
         className="w-1/1"
         onClick={() => {

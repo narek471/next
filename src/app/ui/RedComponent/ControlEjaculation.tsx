@@ -11,7 +11,7 @@ export default function ControlEjaculation() {
         depends on the strength of the{" "}
         <span className="text-[#53cc58]">Pelvic Floor (PF) muscles </span>
       </h2>
-      <video height="720" autoPlay loop>
+      <video height="720" autoPlay loop playsInline>
         <source src="https://quiz.kegel-plan.me/video/video_PE_s1.mp4"></source>
       </video>
 

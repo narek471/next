@@ -12,7 +12,7 @@ export default function BackContinue() {
   }, [search]);
 
   return (
-    <section className="flex  gap-2 bg-white font-bold justify-center fixed bottom-0 w-1/1 top-[90%]">
+    <section className="flex  gap-2 bg-white font-bold justify-center max-sm:top-[85%] fixed bottom-0 w-1/1 top-[90%]">
       <button>
         <Link
           href={`analyzing?${searchParam}`}

@@ -86,7 +86,7 @@ export default function NextBack() {
   }, [taskAnswered, selected, searchParams]);
 
   return (
-    <section className="flex gap-2 bg-white font-bold fixed bottom-0 top-[90%]">
+    <section className="flex  gap-2 bg-white font-bold fixed max-sm:top-[85%] top-[90%]">
       <button>
         <Link
           href={Number(task) <= 0 ? "/" : `${+task! - 1}?${searchParams}`}

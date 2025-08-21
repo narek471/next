@@ -193,7 +193,7 @@ export default function CreditCardBlue() {
       <button
         type="submit"
         disabled={disabled}
-        className={`mt-[30px] h-[55px] w-1/1 rounded-[100px] font-bold  cursor-pointer  ${
+        className={`mt-[30px] h-[55px] w-1/1 rounded-[100px] mb-[30px] font-bold  cursor-pointer  ${
           disabled
             ? "bg-[#cacaca]"
             : "bg-[#5773d6] shadow-[0px_10px_40px_#5773d6]"

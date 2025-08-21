@@ -9,7 +9,7 @@ export default function MensImproved() {
         ejaculation control by following
         <span className="underline">the Kegel Plan</span>
       </h2>
-      <video autoPlay>
+      <video autoPlay playsInline>
         <source src="https://quiz.kegel-plan.me/video/video_8outof10.mp4"></source>
       </video>
       <div className=" flex gap-2 flex-col w-[500px] max-lg:w-[300px] p-[16px] rounded-[9px] bg-[#1d1d1f] text-[15px]  text-white">

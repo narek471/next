@@ -6,7 +6,7 @@ export default function QualityErect() {
         strength of the{" "}
         <span className="text-[#53cc58]">Pelvic Floor (PF) muscles</span>{" "}
       </h2>
-      <video height="720" autoPlay loop>
+      <video height="720" autoPlay loop playsInline>
         <source src="https://quiz.kegel-plan.me/video/video_ED_s1.mp4"></source>
       </video>
       <p className="text-[15px] text-center text-white">

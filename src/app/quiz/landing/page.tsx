@@ -45,7 +45,8 @@ export default function Landing() {
           ref={ref}
           width="311"
           poster="https://quiz.kegel-plan.me/video/posters/video_reviews.gif"
-          className=" w-[536px] max-md:w-[300px] ">
+          className=" w-[536px] max-md:w-[300px] "
+          playsInline>
           <source
             src="https://quiz.kegel-plan.me/video/video_reviews_landing.mp4"
             type="video/mp4"

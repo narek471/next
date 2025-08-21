@@ -11,7 +11,7 @@ export default function RedNextBack() {
   const search = useSearchParams().toString();
 
   return (
-    <section className="flex gap-2  bg-[#111113] font-bold fixed bottom-0 top-[90%]">
+    <section className="flex gap-2  bg-[#111113] font-bold fixed bottom-0 max-sm:top-[80%] top-[90%]">
       <button>
         <Link
           href={Number(task) <= 0 ? "/" : `${+task! - 1}?${search}`}
