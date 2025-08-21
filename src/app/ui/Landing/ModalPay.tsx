@@ -37,8 +37,8 @@ export default function ModalPay({
           setFlag(false);
           if (setModalFlag) {
             setModalFlag(true);
-            redirect("/thank?" + search);
           }
+          redirect("/thank?" + search);
         }}
         className=" h-[97%] overflow-y-scroll overscroll-contain overflow-auto w-[585px] mt-[100px] max-md:w-1/1 bg-white rounded-tl-[16px] p-[24px] flex flex-col">
         <button
