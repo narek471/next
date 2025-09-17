@@ -26,15 +26,24 @@ export default function AgeQuiz() {
           By choosing your age and continuing you agree to our{" "}
           <Link
             className="text-[#5773d6] underline"
-            href="https://quiz.kegel-plan.me/terms.html">
-            Terms & Conditions | Privacy Policy
+            href="https://www.termsfeed.com/live/2b2a27ed-1a1c-4ada-b6b8-d5a6cdc246f3">
+            Terms & Conditions |
+          </Link>
+          <Link
+            className="text-[#5773d6] underline"
+            href="https://www.termsfeed.com/live/c61a8a44-f66d-4669-ad9f-faee10d11010">
+            {" "}
+            Privacy Policy
           </Link>
           .Please review before continuing
         </p>
       </div>
       <div className="opacity-75 text-[#111113] text-[14px] flex flex-col gap-1">
-        <p className="text-center">Appercut sp z o o </p>
-        <p className="text-center">Warsaw, Twarda 18, 00-105</p>
+        <p className="text-center">© Viralyze LLP </p>
+        <p className="text-center">
+          {" "}
+          ****Stoney Works, 8 Stoney Lane, London, England, SE19 3BD
+        </p>
       </div>
     </section>
   );

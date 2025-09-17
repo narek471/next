@@ -17,23 +17,18 @@ export default function FooterLanding() {
         professional.
       </p>
       <p className="text-center opacity-50 max-md:w-[240px]">
-        Appercut sp. z o.o. Warsaw, Twarda 18, 00-105
+        ****Stoney Works, 8 Stoney Lane, London, England, SE19 3BD
       </p>
       <div className="flex flex-col gap-4 text-center items-center">
         <Link
-          href="https://quiz.kegel-plan.me/privacy-policy.html"
+          href="https://www.termsfeed.com/live/c61a8a44-f66d-4669-ad9f-faee10d11010l"
           className="underline opacity-75">
           Privacy Policy
         </Link>
         <Link
-          href="https://quiz.kegel-plan.me/terms.html"
+          href="https://www.termsfeed.com/live/2b2a27ed-1a1c-4ada-b6b8-d5a6cdc246f3"
           className="underline opacity-75">
           Terms & Conditions
-        </Link>
-        <Link
-          href="https://quiz.kegel-plan.me/refund.html"
-          className="underline opacity-75">
-          Refund Policy
         </Link>
       </div>
     </footer>
