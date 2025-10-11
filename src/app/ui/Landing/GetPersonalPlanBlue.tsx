@@ -209,10 +209,10 @@ export default function GetPersonalPlanBlue({
         className="shadow-[0_15px_37px_#5773d6] cursor-pointer font-bold text-[18px] bg-[#5773d6] w-1/1 rounded-[100px] text-white p-[16px]">
         Get My Plan
       </button>
-
+      {/* 
       <AnimatePresence>
         {flag && <ModalPay setDiscount={setDiscount} setFlag={setFlag} />}
-      </AnimatePresence>
+      </AnimatePresence> */}
       {discount && (
         <SuperDiscount setDiscount={setDiscount} setFlag={setFlag} />
       )}

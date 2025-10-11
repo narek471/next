@@ -217,10 +217,10 @@ export default function GetPersonalPlan({ title }: { title: string }) {
         className="shadow-[0_15px_37px_#e44240a3] cursor-pointer font-bold text-[18px] bg-[#e44240] w-1/1 rounded-[100px] text-white p-[16px]">
         Get My Plan
       </button>
-
+      {/* 
       <AnimatePresence>
         {flag && <ModalPay setModalFlag={setSuccessFlag} setFlag={setFlag} />}
-      </AnimatePresence>
+      </AnimatePresence> */}
 
       <p className="text-[10px] text-center opacity-50">{description}</p>
     </section>
