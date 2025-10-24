@@ -61,8 +61,10 @@ export default function Page() {
     if (quiz) {
       if (quiz.type == "red") {
         document.body.style.background = "#111113";
+        document.body.classList.add('dark-body');
       } else {
         document.body.style.background = "";
+        document.body.classList.remove('dark-body');
       }
     }
     console.log(quiz);
