@@ -20,7 +20,7 @@ export default function HeaderQuiz() {
           <Image width={50} alt="logo" src={logo} />
           <div className="flex flex-col justify-center">
             <p className={`font-bold text-[12px] ${darkText ? "text-white" : "text-black"}`}>
-              Kegel Powerr
+              Kegel Power
             </p>
             <p className={`font-bold text-[12px] ${darkText ? "text-gray-300" : "text-gray-400"}`}>
               For Men`s Health
