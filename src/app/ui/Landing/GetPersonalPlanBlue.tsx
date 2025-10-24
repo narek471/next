@@ -24,7 +24,7 @@ const arrPlans = [
       stay: "0.99 USD",
     },
     description:
-      "We’ve automatically applied the discount to your 1-week Kegel Plan. Please note that your subscription will be automatically renewed at the 31 USD per 1 month at the end of your 1-week Kegel Plan and will then be continuously renewed every - 1 month until you cancel. If you want to manage your subscription, you may do so visiting Billing Center or in the Dr. Kegel app.",
+      "We’ve automatically applied the discount to your 1-week Kegel Plan. Please note that your subscription will be automatically renewed at the 31 USD per 1 month at the end of your 1-week Kegel Plan and will then be continuously renewed every - 1 month until you cancel. If you want to manage your subscription, you may do so visiting Billing Center or in the Kegel Power",
   },
   {
     title: "1-MONTH PLAN",
@@ -38,7 +38,7 @@ const arrPlans = [
       stay: "0.49 USD",
     },
     description:
-      "We’ve automatically applied the discount to your 1-month Kegel Plan. After 1 month, your subscription will be automatically renewed at the full price of 31 USD per 1 month and will then be continuously renewed every 1 month until you cancel. If you want to manage your subscription, you may do so visiting Billing Center or in the Dr. Kegel app.",
+      "We’ve automatically applied the discount to your 1-month Kegel Plan. After 1 month, your subscription will be automatically renewed at the full price of 31 USD per 1 month and will then be continuously renewed every 1 month until you cancel. If you want to manage your subscription, you may do so visiting Billing Center or in the Kegel Power",
   },
   {
     title: "3-MONTH PLAN",
@@ -51,7 +51,7 @@ const arrPlans = [
       stay: "0.29 USD",
     },
     description:
-      "We’ve automatically applied the discount to your 3-months Kegel Plan. After 3 months, your subscription will be automatically renewed at the full price of 53.04 USD per 3 months and will then be continuously renewed every 3 months until you cancel. If you want to manage your subscription, you may do so visiting Billing Center or in the Dr. Kegel app.",
+      "We’ve automatically applied the discount to your 3-months Kegel Plan. After 3 months, your subscription will be automatically renewed at the full price of 53.04 USD per 3 months and will then be continuously renewed every 3 months until you cancel. If you want to manage your subscription, you may do so visiting Billing Center or in the Kegel Power",
   },
 ];
 

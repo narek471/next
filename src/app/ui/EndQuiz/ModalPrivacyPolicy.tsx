@@ -34,7 +34,7 @@ export default function ModalPrivacyPolicy() {
             provide services and enhance my user experience.{" "}
             <a
               className="text-[#5773d6] underline"
-              href="https://quiz.kegel-plan.me/privacy-policy.html"
+              href="https://www.termsfeed.com/live/c61a8a44-f66d-4669-ad9f-faee10d11010"
               target="_blank">
               Privacy Policy
             </a>

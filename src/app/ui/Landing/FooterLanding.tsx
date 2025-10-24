@@ -21,7 +21,7 @@ export default function FooterLanding() {
       </p>
       <div className="flex flex-col gap-4 text-center items-center">
         <Link
-          href="https://www.termsfeed.com/live/c61a8a44-f66d-4669-ad9f-faee10d11010l"
+          href="https://www.termsfeed.com/live/c61a8a44-f66d-4669-ad9f-faee10d11010"
           className="underline opacity-75">
           Privacy Policy
         </Link>

@@ -1,90 +1,105 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { easeIn, Easing, motion } from "framer-motion";
+import { Easing, motion } from "framer-motion";
 
-const MONTHS = [
-  "by September 11",
-  "by September 9",
-  "by September 7",
-  "by September 5",
-  "by September 3",
-];
 const cubic1 = [0.98, 0.03, 0, 0.08];
+
+function formatDate(date: Date) {
+  return `by ${date.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+  })}`;
+}
+
+// Генерация 5 дат: +1 месяц +10 дней, потом -2 дня от каждой
+function generateDates(): string[] {
+  const result: string[] = [];
+  const base = new Date();
+
+  // стартовая дата — через месяц и 10 дней
+  base.setMonth(base.getMonth() + 1);
+  base.setDate(base.getDate() + 10);
+
+  for (let i = 0; i < 5; i++) {
+    result.push(formatDate(new Date(base))); // создаём новый объект даты
+    base.setDate(base.getDate() - 2);
+  }
+
+  return result;
+}
 
 export default function DateAnimation() {
   const [text, setText] = useState("");
   const [endByFlag, setByFlag] = useState(false);
-
-  const [month, setMonth] = useState(0);
+  const [dates, setDates] = useState<string[]>([]);
+  const [index, setIndex] = useState(0);
   const ref = useRef<HTMLParagraphElement>(null);
-  useEffect(() => {
-    let intervalMonth: NodeJS.Timeout;
 
-    const intervalBy = setInterval(() => {
-      setText((val) => {
-        if (val.length < 3) {
-          return val + ".";
-        } else {
-          return "";
-        }
-      });
+  useEffect(() => {
+    const formattedDates = generateDates();
+    setDates(formattedDates);
+
+    const intervalDots: NodeJS.Timeout = setInterval(() => {
+      setText((val) => (val.length < 3 ? val + "." : ""));
     }, 300);
 
-    const timeout = setTimeout(() => {
-      clearInterval(intervalBy);
-      ref.current!.style.display = "none";
+    const timeoutShow: NodeJS.Timeout = setTimeout(() => {
+      clearInterval(intervalDots);
+      if (ref.current) ref.current.style.display = "none";
       setByFlag(true);
 
-      intervalMonth = setInterval(() => {
-        setMonth((value) => {
-          const newMonth = value + 1;
-          if (newMonth === 4) {
-            clearInterval(intervalMonth);
+      const intervalDates: NodeJS.Timeout = setInterval(() => {
+        setIndex((prev) => {
+          const next = prev + 1;
+          if (next === formattedDates.length - 1) {
+            clearInterval(intervalDates);
           }
-          return newMonth;
+          return next;
         });
       }, 1550);
     }, 5000);
 
-    // Функция очистки всех таймеров
     return () => {
-      clearInterval(intervalBy);
-      clearTimeout(timeout);
-      if (intervalMonth) {
-        clearInterval(intervalMonth);
-      }
+      clearInterval(intervalDots);
+      clearTimeout(timeoutShow);
     };
   }, []);
+
   return (
-    <div className="text-xl flex items-center text-[#5773d6] font-bold">
-      {endByFlag && (
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 1.5,
-            repeat: 4,
-            ease: cubic1 as unknown as Easing[],
-          }}>
-          {MONTHS[month]}
-        </motion.span>
-      )}
-      {month == 4 && (
-        <motion.video
-          playsInline
-          initial={{ transform: "translateX(100px)" }}
-          animate={{ transform: "translateX(0px)" }}
-          transition={{ duration: 0.4 }}
-          width={90}
-          autoPlay>
-          <source src="https://quiz.kegel-plan.me/video/en/EN_video_19_faster.mp4" />
-        </motion.video>
-      )}
-      {!endByFlag && (
-        <p ref={ref}>
-          by<span>{text}</span>
-        </p>
-      )}
-    </div>
+      <div className="text-xl flex items-center text-[#5773d6] font-bold">
+        {endByFlag && dates.length > 0 && (
+            <motion.span
+                key={dates[index]}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 1.5,
+                  repeat: index === dates.length - 1 ? 0 : 4,
+                  ease: cubic1 as unknown as Easing[],
+                }}
+            >
+              {dates[index]}
+            </motion.span>
+        )}
+
+        {index === 4 && (
+            <motion.video
+                playsInline
+                initial={{ transform: "translateX(100px)" }}
+                animate={{ transform: "translateX(0px)" }}
+                transition={{ duration: 0.4 }}
+                width={90}
+                autoPlay
+            >
+              <source src="https://quiz.kegel-plan.me/video/en/EN_video_19_faster.mp4" />
+            </motion.video>
+        )}
+
+        {!endByFlag && (
+            <p ref={ref}>
+              by<span>{text}</span>
+            </p>
+        )}
+      </div>
   );
 }

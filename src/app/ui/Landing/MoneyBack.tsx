@@ -23,13 +23,13 @@ export default function MoneyBack() {
         we`re even ready to return your money without any questions if you don`t
         see noticeable improvements. All you need is to send an email to{" "}
         <span className="text-black opacity-100 font-bold">
-          contact@kegel-plan.com
+          support@kegelpower.pro
         </span>{" "}
         within 30 days and ask for a refund. But we`re sure that the Kegel Plan
         will show it`s efficacy and there will be no need for a refund. You can
         find more about the refund process in our{" "}
         <Link
-          href="https://quiz.kegel-plan.me/refund.html"
+          href="https://kegelpower.pro/refund-policy"
           className="text-[#5773d6] font-bold text-center  underline">
           refund policy.
         </Link>

@@ -3,6 +3,7 @@ import tablePlan from "../../../../public/EN_img_pills_vs_kegel_Erection_Stamina
 import NCB from "../../../../public/NCB.svg";
 
 export default function KegelPlan() {
+
   return (
     <section className="flex items-center max-lg:w-[300px] w-[500px] mt-[40px] flex-col gap-5">
       <h2 className="font-bold   text-[20px] text-white text-center">

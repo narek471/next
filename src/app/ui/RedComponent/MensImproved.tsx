@@ -6,8 +6,7 @@ export default function MensImproved() {
     <section className="flex items-center max-lg:w-[300px] w-[500px] mt-[40px] flex-col gap-10">
       <h2 className="font-bold  text-center text-[20px] text-white">
         <span className="text-[#53cc58]">8 out of 10 </span>men improved their
-        ejaculation control by following
-        <span className="underline">the Kegel Plan</span>
+        ejaculation control by following <span className="underline">the Kegel Plan</span>
       </h2>
       <video autoPlay playsInline>
         <source src="https://quiz.kegel-plan.me/video/video_8outof10.mp4"></source>
